@@ -4,6 +4,7 @@
       "inputs": {
         "crate2nix": "crate2nix",
         "flake-utils": "flake-utils",
+        "helmworks": "helmworks",
         "nixpkgs": [
           "blue",
           "substrate",
@@ -13,11 +14,11 @@
         "tatara-rust-ast": "tatara-rust-ast"
       },
       "locked": {
-        "lastModified": 1792327594,
-        "narHash": "sha256-8bHgolPmOWX0vcQ1pOzVWUEfwgGujbFqHAA+ckZj9Uo=",
+        "lastModified": 1792330197,
+        "narHash": "sha256-WE4cSeAkXcq8O0rsLx3LvH1G3ApnkFTmQUDyvbA3y/s=",
         "owner": "pleme-io",
         "repo": "blue",
-        "rev": "16e390f3f6a77010f60abdd55ff7a05a456bd8c6",
+        "rev": "fd70dd7d6a8fbbb70e872979ae99ceefe34a3a5c",
         "type": "github"
       },
       "original": {
@@ -1933,6 +1934,22 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
+    "helmworks": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792279583,
+        "narHash": "sha256-u7OqT0figq1TmJHEWSA8gyIyKnd2qLkCIrtKPh2zCsE=",
+        "owner": "pleme-io",
+        "repo": "helmworks",
+        "rev": "c511ae42cdd738f13d9336693642876d42851b7f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pleme-io",
+        "repo": "helmworks",
         "type": "github"
       }
     },

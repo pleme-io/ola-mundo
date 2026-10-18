@@ -1,2 +1,2 @@
-{{ include "ola-mundo.fullname" . }} answers HTTP on service port {{ .Values.service.port }}; its health is {{ .Values.health }}.
+{{ include "pleme-lib.fullname" . }} answers HTTP on port {{ .Values.listen.port }}; its health is {{ .Values.health }}.
 Settings reach it as OLA_MUNDO_* environment variables, the shikumi env tier over its baked defaults.

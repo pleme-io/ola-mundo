@@ -35,5 +35,12 @@ securityContext:
       - "ALL"
   readOnlyRootFilesystem: true
 service:
-  port: 8417
+  ports:
+    - name: "http"
+      port: 8417
+      protocol: "TCP"
+      targetPort: "http"
   type: "ClusterIP"
+serviceAccount:
+  automountServiceAccountToken: false
+  create: true

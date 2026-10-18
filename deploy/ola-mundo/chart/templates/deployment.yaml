@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "ola-mundo.fullname" . }}
+  name: {{ include "pleme-lib.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "ola-mundo.labels" . | nindent 4 }}
+    {{- include "pleme-lib.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "ola-mundo.selectorLabels" . | nindent 6 }}
+      {{- include "pleme-lib.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "ola-mundo.selectorLabels" . | nindent 8 }}
+        {{- include "pleme-lib.selectorLabels" . | nindent 8 }}
       {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
-      serviceAccountName: {{ include "ola-mundo.fullname" . }}
+      serviceAccountName: {{ include "pleme-lib.fullname" . }}
       automountServiceAccountToken: false
       {{- with .Values.podSecurityContext }}
       securityContext:
