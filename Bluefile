@@ -1,0 +1,15 @@
+package("ola-mundo", "0.1.0")
+
+service(
+  "ola-mundo",
+  {
+    program: "ola.b",
+    repository: "ghcr.io/pleme-io/ola-mundo",
+    port: 8417,
+    config: {greeting: "Olá", subject: "mundo"},
+    flags: {shout: false},
+    schema: {greetings: {text: "text", created_at: "timestamptz"}}
+  }
+)
+
+check("ola", "ola.b")

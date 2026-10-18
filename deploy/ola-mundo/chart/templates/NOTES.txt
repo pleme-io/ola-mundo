@@ -1,0 +1,2 @@
+{{ include "ola-mundo.fullname" . }} answers HTTP on service port {{ .Values.service.port }}; its health is {{ .Values.health }}.
+Settings reach it as OLA_MUNDO_* environment variables, the shikumi env tier over its baked defaults.

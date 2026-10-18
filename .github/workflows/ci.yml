@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    uses: pleme-io/substrate/.github/workflows/nix-fleet.yml@main
+    with:
+      lint: false
+      canonical-check: ""
+      eval-checks: '["ola","repository-lock-fresh","service-ola-mundo-fresh","service-ola-mundo-chart","service-ola-mundo-serves","service-ola-mundo-migrations","service-ola-mundo-trio","image-ola-mundo-distroless"]'
+    secrets: inherit
+
+  image-scan:
+    runs-on: ["self-hosted", "pleme-private"]
+    steps:
+      - uses: actions/checkout@v4
+      - run: nix run .#apps.x86_64-linux.scan-floor-ola-mundo
+      - run: nix run .#apps.x86_64-linux.grype-scan-ola-mundo
