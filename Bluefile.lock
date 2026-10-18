@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "bluefile_b3": "b3:56bdf81c7909a7850064b786a49daa6345068d7a8395635f6bf744d9ef976b28",
+  "bluefile_b3": "b3:5d59dfe87116ae469b5a6a2fef052ffdf087e6ab6916177eee83a0e2d6806ea3",
   "manifest": {
     "schema": 1,
     "name": "ola-mundo",
@@ -35,7 +35,7 @@
         },
         "schema": {
           "greetings": {
-            "created_at": "timestamptz",
+            "created_at": "timestamptz?",
             "text": "text"
           }
         },

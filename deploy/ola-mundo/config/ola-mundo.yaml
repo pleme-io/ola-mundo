@@ -1,4 +1,8 @@
 {
+  "database": {
+    "schema": "ola_mundo",
+    "url": ""
+  },
   "flags": {
     "shout": false
   },

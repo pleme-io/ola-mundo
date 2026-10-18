@@ -8,7 +8,7 @@ service(
     port: 8417,
     config: {greeting: "Olá", subject: "mundo"},
     flags: {shout: false},
-    schema: {greetings: {text: "text", created_at: "timestamptz"}}
+    schema: {greetings: {text: "text", created_at: "timestamptz?"}}
   }
 )
 
