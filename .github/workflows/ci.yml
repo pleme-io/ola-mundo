@@ -22,7 +22,7 @@ jobs:
     secrets: inherit
 
   image-scan:
-    runs-on: ["self-hosted", "pleme-private"]
+    runs-on: ["self-hosted", "pleme-eval-heavy"]
     steps:
       - uses: actions/checkout@v4
       - run: nix run .#apps.x86_64-linux.scan-images
