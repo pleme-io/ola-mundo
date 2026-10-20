@@ -3,7 +3,7 @@ use("settei")
 use("teeburu")
 
 def greeting(s, who)
-  subject = if who == nil || who == ""
+  subject = if who == nil or who == ""
     settei::setting(s, "subject")
   else
     who
@@ -52,7 +52,7 @@ def handle(s, req)
       200,
       "#{recorded(s, greeting(s, kyuuji::query_param(req, "who")))}\n"
     )
-  elsif path == "/greetings" && teeburu::enabled?(s)
+  elsif path == "/greetings" and teeburu::enabled?(s)
     kyuuji::json(200, latest(s))
   else
     kyuuji::not_found(req)
@@ -61,7 +61,7 @@ end
 
 if settei::serving?
   s = settei::current
-  kyuuji::serve_settings(s, fn(req) handle(s, req) end)
+  kyuuji::serve_settings(s, (req) -> handle(s, req))
 end
 
 def settings(shout)
