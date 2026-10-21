@@ -1,0 +1,42 @@
+{
+  "chart": {
+    "name": "ola-mundo",
+    "path": "deploy/ola-mundo/chart",
+    "version": "0.1.0"
+  },
+  "endpoints": [
+    {
+      "name": "http",
+      "path": "/",
+      "port": 8417
+    },
+    {
+      "name": "health",
+      "path": "/healthz",
+      "port": 8417
+    },
+    {
+      "name": "metrics",
+      "path": "/metrics",
+      "port": 8417
+    }
+  ],
+  "image": {
+    "repository": "ghcr.io/pleme-io/ola-mundo",
+    "tag": "0.1.0"
+  },
+  "name": "ola-mundo",
+  "owner": "pleme-io",
+  "placement": {
+    "namespace": "ola-mundo",
+    "replicas": 1
+  },
+  "slo": {
+    "availability": 99.5,
+    "latency": 99,
+    "latency_ms": 100,
+    "window_days": 30
+  },
+  "version": "0.1.0"
+}
+

@@ -6,6 +6,7 @@ service(
     program: "ola.b",
     repository: "ghcr.io/pleme-io/ola-mundo",
     port: 8417,
+    slo: {latency_ms: 100},
     config: {greeting: "Olá", subject: "mundo"},
     flags: {shout: false},
     schema: {greetings: {text: "text", created_at: "timestamptz?"}}
@@ -13,3 +14,5 @@ service(
 )
 
 check("ola", "ola.b")
+
+generate("catalog", "deploy/catalog/ola-mundo.json", "catalog.b", ["Bluefile.lock"])
