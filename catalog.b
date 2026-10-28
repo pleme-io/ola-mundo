@@ -9,5 +9,15 @@ mkdir_p(path_dirname(out))
 
 write_file(
   out,
-  "#{pretty(haibi::catalog_entry(name, get(manifest, "version"), get(get(manifest, "services"), name)))}\n"
+  unlines(
+    [
+      pretty(
+        haibi::catalog_entry(
+          name,
+          get(manifest, "version"),
+          get(get(manifest, "services"), name)
+        )
+      )
+    ]
+  )
 )

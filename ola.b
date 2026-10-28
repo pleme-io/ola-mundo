@@ -3,7 +3,7 @@ use("settei")
 use("teeburu")
 
 def greeting(s, who)
-  subject = if who == nil or who == ""
+  subject = if who.nil? or who == ""
     settei::setting(s, "subject")
   else
     who
@@ -50,7 +50,7 @@ def handle(s, req)
   elsif path == "/"
     kyuuji::text(
       200,
-      "#{recorded(s, greeting(s, kyuuji::query_param(req, "who")))}\n"
+      unlines([recorded(s, greeting(s, kyuuji::query_param(req, "who")))])
     )
   elsif path == "/greetings" and teeburu::enabled?(s)
     kyuuji::json(200, latest(s))
@@ -71,7 +71,7 @@ end
 test "the root greets the configured subject"
   r = handle(settings(false), kyuuji::request("GET", "/", ""))
   assert get(r, :status) == 200
-  assert get(r, :body) == "Olá, mundo!\n"
+  assert get(r, :body) == unlines(["Olá, mundo!"])
 end
 
 test "a who parameter is greeted instead, and an empty one is not"
@@ -88,19 +88,16 @@ test "without a database a greeting is not recorded and /greetings is not a rout
   assert get(
     handle(settings(false), kyuuji::request("GET", "/greetings", "")),
     :status
-  ) ==
-    404
+  ) == 404
 end
 
 test "only GET / is a route"
   assert get(
     handle(settings(false), kyuuji::request("POST", "/", "")),
     :status
-  ) ==
-    404
+  ) == 404
   assert get(
     handle(settings(false), kyuuji::request("GET", "/x", "")),
     :status
-  ) ==
-    404
+  ) == 404
 end
