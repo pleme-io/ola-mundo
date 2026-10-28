@@ -21,7 +21,7 @@ def recorded(s, text)
     c = teeburu::open(s)
     row = teeburu::insert(c, "greetings", {"text" => text})
     pg_close(c)
-    "#{text} (greeting #{to_s(get(row, "id"))})"
+    "#{text} (greeting #{to_s(row["id"])})"
   else
     text
   end
@@ -33,19 +33,15 @@ def latest(s)
   pg_close(c)
   map(
     fn(r)
-      {
-        "id" => get(r, "id"),
-        "text" => get(r, "text"),
-        "created_at" => get(r, "created_at")
-      }
+      {"id" => r["id"], "text" => r["text"], "created_at" => r["created_at"]}
     end,
     rows
   )
 end
 
 def handle(s, req)
-  path = get(req, :path)
-  if get(req, :method) != "GET"
+  path = req[:path]
+  if req[:method] != "GET"
     kyuuji::not_found(req)
   elsif path == "/"
     kyuuji::text(
@@ -70,8 +66,8 @@ end
 
 test "the root greets the configured subject"
   r = handle(settings(false), kyuuji::request("GET", "/", ""))
-  assert get(r, :status) == 200
-  assert get(r, :body) == unlines(["Olá, mundo!"])
+  assert r[:status] == 200
+  assert r[:body] == unlines(["Olá, mundo!"])
 end
 
 test "a who parameter is greeted instead, and an empty one is not"
@@ -92,12 +88,8 @@ test "without a database a greeting is not recorded and /greetings is not a rout
 end
 
 test "only GET / is a route"
-  assert get(
-    handle(settings(false), kyuuji::request("POST", "/", "")),
-    :status
-  ) == 404
-  assert get(
-    handle(settings(false), kyuuji::request("GET", "/x", "")),
-    :status
-  ) == 404
+  assert handle(settings(false), kyuuji::request("POST", "/", ""))[:status] ==
+    404
+  assert handle(settings(false), kyuuji::request("GET", "/x", ""))[:status] ==
+    404
 end
