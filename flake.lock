@@ -14,11 +14,11 @@
         "tatara-rust-ast": "tatara-rust-ast"
       },
       "locked": {
-        "lastModified": 1793263906,
-        "narHash": "sha256-AxNJq/jQCoK6Xa1ppjksq3ySrRpFhifTnt6aiTjTWYE=",
+        "lastModified": 1793264838,
+        "narHash": "sha256-34q0hBBwdgkxV2I0NnvAn+fOfqVkEfYJQY4CLtr7eFQ=",
         "owner": "pleme-io",
         "repo": "blue",
-        "rev": "e0ceaefe7b9985c98bdc5678ac2fe1c8aeeb28a5",
+        "rev": "56910482f0b1f215983ab52a28c4c53fb728bffa",
         "type": "github"
       },
       "original": {
