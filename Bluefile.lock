@@ -51,6 +51,24 @@
         "slo": {
           "latency_ms": 100
         },
+        "access": {
+          "effects": [
+            "network",
+            "clock",
+            "entropy",
+            "environment"
+          ],
+          "egress": [],
+          "reads": [],
+          "writes": [],
+          "listen": [
+            8417
+          ],
+          "exec": []
+        },
+        "runtime": {
+          "kind": "wasm"
+        },
         "output": "deploy/ola-mundo"
       }
     }
