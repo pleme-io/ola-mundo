@@ -3,8 +3,7 @@
 The premier example of blue templating. A new blue service starts as a copy of this repo.
 One declaration (`Bluefile`) and one program (`ola.b`) lower to every artifact; nothing is
 written twice. It is the reference for the batteries-included blue service: one `service(...)`,
-one `model(...)`, the handlers, and every concern a bidama (`theory/BLUE-STRUCTURE.md` §6.5–6.6,
-`blue/docs/SERVICE-ARCHITECTURE.md`). Today its `schema` is the first rendering of the model.
+one `model(...)`, the handlers, and every concern a bidama (`blue/docs/SERVICE-ARCHITECTURE.md`). Today its `schema` is the first rendering of the model.
 
 ## What it shows
 
