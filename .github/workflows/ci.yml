@@ -13,16 +13,25 @@ permissions:
   contents: read
 
 jobs:
+  resolve:
+    uses: pleme-io/substrate/.github/workflows/runner-resolve.yml@main
+
   checks:
+    needs: resolve
     uses: pleme-io/substrate/.github/workflows/nix-fleet.yml@main
     with:
+      runner-labels: ${{ format('["{0}"]', needs.resolve.outputs.runner) }}
       lint: false
       canonical-check: ""
       eval-checks: '["project"]'
     secrets: inherit
 
   image-scan:
-    runs-on: ["self-hosted", "pleme-eval-heavy"]
+    needs: resolve
+    runs-on: ${{ needs.resolve.outputs.runner }}
     steps:
       - uses: actions/checkout@v4
+      - uses: pleme-io/actions/nix-setup@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: nix run .#apps.x86_64-linux.scan-images
