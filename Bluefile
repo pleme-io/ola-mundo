@@ -1,7 +1,5 @@
 package("ola-mundo", "0.1.0")
 
-source("houshi", "github:pleme-io/bidama-houshi", "bidamas")
-
 service(
   "ola-mundo",
   {

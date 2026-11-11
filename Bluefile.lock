@@ -1,18 +1,13 @@
 {
   "schema": 1,
-  "bluefile_b3": "b3:67a044c866e79de051b348263744028ea12500c19f4899d804039ae4523836a0",
+  "bluefile_b3": "b3:24abd7f91d1d7482c3a249c50c4e00c76930f7c9d8353fa2b70471722191b2e4",
   "manifest": {
     "schema": 1,
     "name": "ola-mundo",
     "version": "0.1.0",
     "needs": {},
     "when": "anytime",
-    "sources": {
-      "houshi": {
-        "url": "github:pleme-io/bidama-houshi",
-        "dir": "bidamas"
-      }
-    },
+    "sources": {},
     "packages": [],
     "runs": {},
     "tools": [],
@@ -78,12 +73,5 @@
       }
     }
   },
-  "sources": {
-    "houshi": {
-      "url": "github:pleme-io/bidama-houshi",
-      "rev": "04972a5cd642a19e4faefec5003be75baf2493ee",
-      "narHash": "sha256-zvhWPaJL1baga+0A6O+01aEkY6LDf4dB1Z/1z/7aic8=",
-      "storePath": "/nix/store/sgx0335sagy02gma315b9v25dzzm5hjp-source"
-    }
-  }
+  "sources": {}
 }

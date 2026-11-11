@@ -1,5 +1,5 @@
+use("chozou/teeburu")
 use("eigyou/kyuuji")
-use("houshi/chozou/teeburu")
 use("settei")
 
 def greeting(s, who)
@@ -17,9 +17,9 @@ def greeting(s, who)
 end
 
 def recorded(s, text)
-  if houshi::chozou::teeburu::enabled?(s)
-    c = houshi::chozou::teeburu::open(s)
-    row = houshi::chozou::teeburu::insert(c, "greetings", {"text" => text})
+  if chozou::teeburu::enabled?(s)
+    c = chozou::teeburu::open(s)
+    row = chozou::teeburu::insert(c, "greetings", {"text" => text})
     pg_close(c)
     "#{text} (greeting #{to_s(row["id"])})"
   else
@@ -28,8 +28,8 @@ def recorded(s, text)
 end
 
 def latest(s)
-  c = houshi::chozou::teeburu::open(s)
-  rows = houshi::chozou::teeburu::latest(c, "greetings", 5)
+  c = chozou::teeburu::open(s)
+  rows = chozou::teeburu::latest(c, "greetings", 5)
   pg_close(c)
   map(
     fn(r)
@@ -50,7 +50,7 @@ def handle(s, req)
         [recorded(s, greeting(s, eigyou::kyuuji::query_param(req, "who")))]
       )
     )
-  elsif path == "/greetings" and houshi::chozou::teeburu::enabled?(s)
+  elsif path == "/greetings" and chozou::teeburu::enabled?(s)
     eigyou::kyuuji::json(200, latest(s))
   else
     eigyou::kyuuji::not_found(req)
